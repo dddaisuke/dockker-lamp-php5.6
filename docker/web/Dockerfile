@@ -3,11 +3,14 @@ FROM php:5.6.28-apache
 
 MAINTAINER docker-web
 
-RUN apt-get update \
-    && apt-get -y install vim wget lsb-release libicu-dev mysql-client \
-    && docker-php-ext-install pdo_mysql mysqli intl
+RUN echo "deb http://deb.debian.org/debian jessie main" > /etc/apt/sources.list &&\
+    echo "deb http://security.debian.org jessie/updates main" >> /etc/apt/sources.list &&\
+    apt-get update \
+    && apt-get -y install zip unzip vim wget lsb-release libicu-dev mysql-client git php5-mcrypt libmcrypt-dev \
+    && docker-php-ext-install pdo_mysql mysqli intl mcrypt
 # mod_rewriteを 有効に
 RUN a2enmod rewrite
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN ln -s /etc/apache2/mods-available/vhost_alias.load /etc/apache2/mods-enabled
 RUN echo ServerName $HOSTNAME > /etc/apache2/conf-available/fqdn.conf && a2enconf fqdn
