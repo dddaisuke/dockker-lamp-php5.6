@@ -1,5 +1,5 @@
 # docker-lamp
-Dockerand docker-compose 
+Dockerand docker-compose
 
 - Apache
 	- mod_rewrite
@@ -11,7 +11,7 @@ Dockerand docker-compose
 * Operation check
 - php5.6.28
 	- ✅ baserCMS 3.0.16
-	- ✅ Wordpress 4.9.8 
+	- ✅ Wordpress 4.9.8
 - php7.1
 	- ✅ baserCMS 4.1.3
 	- ✅ Wordpress 4.9.8
@@ -30,6 +30,13 @@ $ docker-compose up
 ```
 
 You can access [http://localhost:8080/](http://localhost:8080/)
+
+
+## How to connect web environment
+
+```
+$ docker-compose exec web bash
+```
 
 ## Directory
 
